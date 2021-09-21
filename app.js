@@ -26,7 +26,7 @@ app.post("/",function(req,res){
                 }
             }
         ]
-    }
+    };
     const dataJSON = JSON.stringify(data);
 
     url = "https://us5.api.mailchimp.com/3.0/lists/2155685678";
