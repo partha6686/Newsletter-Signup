@@ -1,5 +1,6 @@
 const express = require("express");
 const https = require("https");
+const mailchimpApi = require(__dirname + "/mailchimp.js");
 
 const app = express();
 app.use(express.static("public"));
@@ -29,10 +30,10 @@ app.post("/",function(req,res){
     };
     const dataJSON = JSON.stringify(data);
 
-    url = "https://us5.api.mailchimp.com/3.0/lists/2155685678";
+    url = mailchimpApi.mailchimpUrl;
     options = {
         method: "POST",
-        auth: "Apik:be0decca03f4063d11e1298bdad1ef65-us5"
+        auth: mailchimpApi.mailchimpApiKey
     }
     const request = https.request(url, options, function(response){
         if(response.statusCode === 200){
